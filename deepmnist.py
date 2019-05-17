@@ -1,15 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[9]:
-
 
 ####image recognition of mnist dataset using deep learning
 import tensorflow as tf #import library 
 (x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
 
-
-# In[10]:
 
 
 ##to plot image 
@@ -22,15 +18,10 @@ print(y_train[image_index])
 plt.imshow(x_train[image_index],cmap='Greys')
 
 
-# In[ ]:
-
-
 #to identify the shape of dataset
 print("the training data shape is ",x_train.shape)#(60000,28,28)----60000 images with 28x28
 print("the testing data shape is",x_test.shape)#(10000,28,28)------10000 images with 28x28
 
-
-# In[11]:
 
 
 ##preprocess the input data
@@ -42,10 +33,7 @@ x_train=x_train.astype('float32') #for float values
 x_test=x_test.astype('float32')
 x_train/=255 #normalising the values
 x_test/=255
-print('x_train.shape:after normalising',x_train.shape)
-
-
-# In[12]:
+print('x_train.shape:after normalising',x_train.shape)]:
 
 
 #import keras module having models and layers
@@ -67,8 +55,6 @@ def deep_model():
     return model
 
 
-# In[13]:
-
 
 # build the model
 model = deep_model()
@@ -79,9 +65,7 @@ scores = model.evaluate(x_test, y_test, verbose=0)
 print("Baseline Error: %.2f%%" % (100-scores[1]*100))
 
 
-# In[14]:
-
-
+# individual evaluation
 image_index = 7777
 plt.imshow(x_test[image_index].reshape(28, 28),cmap='Greys')
 pred = model.predict(x_test[image_index].reshape(1, 28,28, 1))
